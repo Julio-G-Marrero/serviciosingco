@@ -9,6 +9,7 @@ class TareaController {
     public static function index() {
         session_start();
         isAuth();
+        header('Access-Control-Allow-Origin: *');
         $proyectoId = $_GET['id'];
         if(!$proyectoId) {
             header('Location: /dashboard');
@@ -26,7 +27,7 @@ class TareaController {
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             session_start();
             isAuth();
-
+            header('Access-Control-Allow-Origin: *');
             $proyectoid = $_POST['proyectoId'];
             $proyecto = Proyecto::where('url',$proyectoid);
 
@@ -55,7 +56,7 @@ class TareaController {
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             session_start();
             isAuth();
-
+            header('Access-Control-Allow-Origin: *');
             //Validar que el proyecto exista
             $proyecto = Proyecto::where('url',$_POST['proyectoId']);
             if(!$proyecto || $proyecto->propetarioId !== $_SESSION['id']) {
@@ -86,7 +87,7 @@ class TareaController {
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             session_start();
             isAuth();
-
+            header('Access-Control-Allow-Origin: *');
             //Validar que el proyecto exista
             $proyecto = Proyecto::where('url',$_POST['proyectoId']);
             if(!$proyecto || $proyecto->propetarioId !== $_SESSION['id']) {
