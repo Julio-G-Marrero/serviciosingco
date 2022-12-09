@@ -154,4 +154,27 @@ class DashboardContoller {
 
         ]);
     }
+    public static function niux(Router $router) {
+        $linea = 0;
+        //Abrimos nuestro archivo
+        $archivo = fopen("C:\Users\Acer\Desktop\Programacion\Cursos\FullStack\UpTask_MVC\UpTask_MVC\controllers\prueba.csv", "r");
+        
+        //Lo recorremos
+        while (($datos = fgetcsv($archivo,0, ",")) == true) {
+            $num = count($datos);
+            //Recorremos las columnas de esa linea
+            for ($columna = 0; $columna < $num; $columna++) {
+                echo $datos[$columna] . "\n";
+                
+            }
+        }
+        //Cerramos el archivo
+        fclose($archivo);
+
+
+        $router->render('dashboard/monedero',[
+            'titulo' => 'Monederos Niux',
+
+        ]);
+    }
 }

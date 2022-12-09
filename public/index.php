@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../includes/app.php';
 
+use Controllers\ApiServicios;
 use Controllers\LoginController;
 use Controllers\DashboardContoller;
 use Controllers\TareaController;
@@ -38,6 +39,11 @@ $router->get('/perfil',[DashboardContoller::class,'perfil']);
 $router->get('/cambiar-password',[DashboardContoller::class,'cambiar_password']);
 $router->post('/cambiar-password',[DashboardContoller::class,'cambiar_password']);
 $router->post('/perfil',[DashboardContoller::class,'perfil']);
+
+//Api Servicios
+$router->get('/api/servicios',[ApiServicios::class,'index']);
+$router->post('/api/servicios',[ApiServicios::class,'proyecto']);
+
 
 //API para las tareas
 $router->get('/api/tareas',[TareaController::class,'index']);
