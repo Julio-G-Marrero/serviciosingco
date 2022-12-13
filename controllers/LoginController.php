@@ -8,6 +8,8 @@ use MVC\Router;
 
 class LoginController {
     public static function login(Router $router){
+        header("X-Frame-Options: SAMEORIGIN");
+
         $alertas = [];
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $auth = new Usuario($_POST);
